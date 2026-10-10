@@ -1,0 +1,36 @@
+package rules.coupon
+
+import com.drools.promote.model.CouponRuleResult;
+
+rule "优惠券满足500减50"
+salience 50
+    when
+        $c:CouponRuleResult($ms:moneySum>500);
+    then
+        modify($c){
+            setFinallyMoney($ms-50)
+        }
+        drools.halt();
+end
+
+rule "优惠券满足300减30"
+salience 30
+    when
+        $c:CouponRuleResult($ms:moneySum>300);
+    then
+        modify($c){
+            setFinallyMoney($ms-30)
+        }
+        drools.halt();
+end
+
+rule "优惠券满足100减10"
+salience 10
+    when
+        $c:CouponRuleResult($ms:moneySum>100);
+    then
+        modify($c){
+            setFinallyMoney($ms-10)
+        }
+        drools.halt();
+end

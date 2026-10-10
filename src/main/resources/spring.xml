@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:kie="http://drools.org/schema/kie-spring"
+       xsi:schemaLocation="
+       http://drools.org/schema/kie-spring
+       http://drools.org/schema/kie-spring.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 与kmodule.xml的配置是相似的 -->
+    <kie:kmodule id="springKieKmodule">
+        <kie:kbase name="couponKbase" packages="rules.coupon">
+            <kie:ksession name="couponKsession"/>
+        </kie:kbase>
+    </kie:kmodule>
+    <bean id="kiePostProcessor" class="org.kie.spring.annotations.KModuleAnnotationPostProcessor"/>
+</beans>
